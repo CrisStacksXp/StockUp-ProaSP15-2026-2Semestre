@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" 
+  <link href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script type="module" src="scripts/script.js"></script>
+  <title>StockUp</title>
+
+  <style>
+  :root { color-scheme: light; }
+      body { background: #121212; }
+      .grid-pattern { background-image: linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px); background-size: 34px 34px; }
+      .glass { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.13); backdrop-filter: blur(12px); }
+      .anchor-offset { scroll-margin-top: 100px; }
+
+  /* Melhorias de navegação e acessibilidade */
+  html { scroll-behavior: smooth; }
+  body { min-width: 320px; }
+  a:focus-visible, button:focus-visible { outline: 3px solid #65a30d; outline-offset: 3px; }
+  .mobile-menu-panel { display: none; }
+  .mobile-menu-panel.is-open { display: block; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  }
+
+  </style>
+</head>
+
+<body>
+  <!-- Navegação -->
+  <header class="sticky top-0 z-50 border-b border-black/5 bg-paper/90 backdrop-blur-xl">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8" aria-label="Navegação principal">
+      <a href="#inicio" class="flex items-center gap-3" aria-label="StockUp - início">
+        <span class="grid h-10 w-10 place-items-center rounded-2xl bg-ink text-leaf shadow-sm">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5v-9Z" stroke="currentColor" stroke-width="1.8"
+              stroke-linejoin="round" />
+            <path d="m8 12 2.5 2.5L16.5 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </span>
+        <span class="text-xl font-black tracking-tight">Stock<span class="text-emerald-700">Up</span><span
+            class="ml-2 rounded-full bg-emerald-100 px-2 py-1 align-middle text-[10px] font-bold uppercase tracking-widest text-emerald-900">Projeto</span></span>
+      </a>
+      <div class="hidden items-center gap-8 text-sm font-semibold text-slate-600 md:flex">
+        <a class="transition hover:text-emerald-800" href="#problema">O problema</a>
+        <a class="transition hover:text-emerald-800" href="#solucao">A solução</a>
+        <a class="transition hover:text-emerald-800" href="#funcionalidades">Funcionalidades</a>
+        <a class="transition hover:text-emerald-800" href="#tecnologias">Tecnologias</a>
+      </div>
+      <button id="mobile-menu-button" type="button"
+        class="inline-flex items-center justify-center rounded-full border border-black/10 px-4 py-3 text-sm font-bold md:hidden"
+        aria-expanded="false" aria-controls="mobile-menu">
+        <span id="mobile-menu-label">Menu</span><span class="ml-2" aria-hidden="true">☰</span>
+      </button>
+      <a href="#links"
+        class="hidden rounded-full bg-ink px-5 py-3 text-sm font-bold text-white transition hover:bg-emerald-900 sm:inline-block">Explorar
+        projeto <span aria-hidden="true">↗</span></a>
+      <div id="mobile-menu"
+        class="mobile-menu-panel absolute left-0 right-0 top-full border-b border-black/10 bg-paper px-5 py-4 shadow-lg md:hidden"
+        hidden>
+        <a class="block rounded-xl px-4 py-3 font-semibold text-slate-700 hover:bg-emerald-50" href="#problema">O
+          problema</a>
+        <a class="block rounded-xl px-4 py-3 font-semibold text-slate-700 hover:bg-emerald-50" href="#solucao">A
+          solução</a>
+        <a class="block rounded-xl px-4 py-3 font-semibold text-slate-700 hover:bg-emerald-50"
+          href="#funcionalidades">Funcionalidades</a>
+        <a class="block rounded-xl px-4 py-3 font-semibold text-slate-700 hover:bg-emerald-50"
+          href="#tecnologias">Tecnologias</a>
+        <a class="mt-2 block rounded-xl bg-ink px-4 py-3 text-center font-bold text-white" href="#links">Explorar
+          projeto ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="inicio" class="relative isolate overflow-hidden bg-ink text-white">
+      <div class="grid-pattern absolute inset-0 -z-10 opacity-70"></div>
+      <div class="absolute -right-32 -top-32 -z-10 h-96 w-96 rounded-full bg-emerald-500/20 blur-3xl"></div>
+      <div class="absolute -bottom-40 left-1/4 -z-10 h-96 w-96 rounded-full bg-lime-300/10 blur-3xl"></div>
+      <div
+        class="mx-auto grid max-w-7xl items-center gap-14 px-5 py-20 md:py-28 lg:grid-cols-[1.05fr_.95fr] lg:px-8 lg:py-32">
+        <div>
+          <div
+            class="mb-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-[.16em] text-leaf">
+            <span class="h-2 w-2 rounded-full bg-leaf"></span> Gestão simples para pequenos negócios</div>
+          <h1 class="max-w-3xl text-5xl font-black leading-[1.04] tracking-tight sm:text-6xl lg:text-7xl">Seu negócio em
+            ordem. <span class="text-leaf">Seu próximo passo, mais claro.</span></h1>
+          <p class="mt-7 max-w-xl text-lg leading-8 text-slate-300">Um sistema web pensado para ajudar pequenos
+            vendedores a controlar produtos, acompanhar vendas e saber exatamente o que ainda têm em estoque.</p>
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href="#solucao"
+              class="inline-flex items-center justify-center gap-2 rounded-full bg-leaf px-6 py-4 font-extrabold text-ink transition hover:-translate-y-0.5 hover:bg-lime-200">Conheça
+              a proposta <span aria-hidden="true">↓</span></a>
+            <a href="https://github.com/CrisStacksXp/StockUp-ProaSP15-2026-2Semestre" target="_blank" rel="noreferrer"
+              class="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-4 font-bold text-white transition hover:bg-white/10">Ver
+              repositório <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-400"><span>✦ Projeto
+              acadêmico</span><span>✦ Front-end + Firebase</span><span>✦ Design responsivo</span></div>
+        </div>
+
+        <!-- Preview ilustrativo do painel -->
+        <div class="relative mx-auto w-full max-w-xl">
+          <div class="absolute -inset-4 rounded-[2rem] bg-leaf/10 blur-2xl"></div>
+          <div
+            class="relative overflow-hidden rounded-[1.7rem] border border-white/15 bg-[#10271f] p-4 shadow-2xl sm:p-6">
+            <div class="flex items-center justify-between border-b border-white/10 pb-5">
+              <div>
+                <p class="text-xs font-semibold text-slate-400">VISÃO GERAL</p>
+                <h2 class="mt-1 text-xl font-bold">Painel do negócio</h2>
+              </div>
+              <div class="flex gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-red-400"></span><span
+                  class="h-2.5 w-2.5 rounded-full bg-yellow-300"></span><span
+                  class="h-2.5 w-2.5 rounded-full bg-leaf"></span></div>
+            </div>
+            <div class="grid grid-cols-2 gap-3 py-5">
+              <div class="glass rounded-2xl p-4">
+                <div class="flex items-center justify-between text-slate-300"><span class="text-xs">Total
+                    vendido</span><span>↗</span></div>
+                <p class="mt-3 text-2xl font-black">R$ 2.480<span class="text-sm">,00</span></p>
+                <p class="mt-2 text-xs text-leaf">Resumo de vendas</p>
+              </div>
+              <div class="glass rounded-2xl p-4">
+                <div class="flex items-center justify-between text-slate-300"><span
+                    class="text-xs">Produtos</span><span>▦</span></div>
+                <p class="mt-3 text-2xl font-black">128</p>
+                <p class="mt-2 text-xs text-slate-400">Itens cadastrados</p>
+              </div>
+            </div>
+            <div class="glass rounded-2xl p-4 sm:p-5">
+              <div class="mb-5 flex items-center justify-between">
+                <div>
+                  <p class="font-bold">Estoque de produtos</p>
+                  <p class="mt-1 text-xs text-slate-400">Exemplo ilustrativo de acompanhamento</p>
+                </div><span class="rounded-full bg-leaf/15 px-3 py-1.5 text-xs font-bold text-leaf">3 alertas</span>
+              </div>
+              <div class="space-y-4">
+                <div>
+                  <div class="mb-2 flex justify-between text-sm"><span class="text-slate-200">Café
+                      tradicional</span><span class="font-bold text-leaf">24 un.</span></div>
+                  <div class="h-2 overflow-hidden rounded-full bg-white/10">
+                    <div class="h-full w-3/4 rounded-full bg-leaf"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="mb-2 flex justify-between text-sm"><span class="text-slate-200">Leite integral</span><span
+                      class="font-bold text-amber-300">6 un.</span></div>
+                  <div class="h-2 overflow-hidden rounded-full bg-white/10">
+                    <div class="h-full w-1/4 rounded-full bg-amber-300"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="mb-2 flex justify-between text-sm"><span class="text-slate-200">Biscoito</span><span
+                      class="font-bold text-red-300">2 un.</span></div>
+                  <div class="h-2 overflow-hidden rounded-full bg-white/10">
+                    <div class="h-full w-[10%] rounded-full bg-red-300"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="mt-4 text-center text-[11px] text-slate-500">Prévia conceitual — números e produtos fictícios</p>
+          </div>
+          <div
+            class="absolute -bottom-5 -left-4 hidden items-center gap-3 rounded-2xl bg-white px-4 py-3 text-ink shadow-soft sm:flex">
+            <span class="grid h-10 w-10 place-items-center rounded-xl bg-emerald-400 text-xl">✓</span>
+            <div>
+              <p class="text-sm font-extrabold text-black">Mais controle</p>
+              <p class="text-xs text-muted text-black">Menos improviso no dia a dia</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problema -->
+    <section id="problema" class="anchor-offset mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+      <div class="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
+        <div>
+          <p class="text-sm font-extrabold uppercase tracking-[.18em] text-emerald-700">01 / O desafio</p>
+          <h2 class="mt-4 text-4xl font-black text-white leading-tight tracking-tight sm:text-5xl">Quando tudo fica na anotação,
+            <span class="text-emerald-700">o controle se perde.</span></h2>
+        </div>
+        <div>
+          <p class="text-lg leading-8 text-slate-600">Pequenos vendedores podem ter dificuldade para acompanhar
+            mercadorias, registrar vendas e manter o estoque atualizado. Anotações manuais e planilhas improvisadas
+            tornam essas tarefas mais trabalhosas e podem aumentar o risco de erros.</p>
+          <div class="mt-8 grid gap-4 sm:grid-cols-3">
+            <article class="rounded-2xl border border-black/5 bg-white p-5 shadow-sm"><span class="text-2xl">🧾</span>
+              <h3 class="mt-4 font-extrabold">Registros dispersos</h3>
+              <p class="mt-2 text-sm leading-6 text-muted">Informações espalhadas dificultam consultas rápidas.</p>
+            </article>
+            <article class="rounded-2xl border border-black/5 bg-white p-5 shadow-sm"><span class="text-2xl">📦</span>
+              <h3 class="mt-4 font-extrabold">Estoque incerto</h3>
+              <p class="mt-2 text-sm leading-6 text-muted">É mais difícil saber o que está disponível para venda.</p>
+            </article>
+            <article class="rounded-2xl border border-black/5 bg-white p-5 shadow-sm"><span class="text-2xl">📉</span>
+              <h3 class="mt-4 font-extrabold">Pouca visibilidade</h3>
+              <p class="mt-2 text-sm leading-6 text-muted">Acompanhar o total vendido exige esforço manual.</p>
+            </article>
+          </div>
+          <p class="mt-4 text-xs text-white leading-5 text-muted">Esses pontos são hipóteses do projeto e podem ser validados com
+            conversas ou pesquisas com potenciais usuários.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solução -->
+    <section id="solucao" class="anchor-offset bg-mint/60 py-20 lg:py-24">
+      <div class="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-2 lg:items-center lg:px-8">
+        <div>
+          <p class="text-sm font-extrabold uppercase tracking-[.18em] text-emerald-400">02 / A proposta</p>
+          <h2 class="mt-4 text-4xl font-black text-white tracking-tight sm:text-5xl">Uma rotina comercial mais simples, em um só
+            lugar.</h2>
+          <p class="mt-6 text-lg leading-8 text-slate-100">O StockUp propõe reunir o cadastro de produtos, as
+            movimentações do estoque e o registro de vendas em uma interface web objetiva e fácil de utilizar.</p>
+          <ul class="mt-8 space-y-4 &>strong: text-white">
+            <li class="flex gap-3"><span
+                class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-emerald-400 text-sm font-black text-white">✓</span><span><strong>Centralizar:</strong>
+                organizar os dados dos produtos e das vendas.</span></li>
+            <li class="flex gap-3"><span
+                class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-emerald-400 text-sm font-black text-white">✓</span><span><strong>Automatizar:</strong>
+                atualizar o estoque e calcular o valor das vendas.</span></li>
+            <li class="flex gap-3"><span
+                class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-emerald-400 text-sm font-black text-white">✓</span><span><strong>Visualizar:</strong>
+                consultar indicadores e identificar estoque baixo.</span></li>
+          </ul>
+        </div>
+        <div class="rounded-[2rem] bg-ink p-7 text-white shadow-soft sm:p-10">
+          <p class="text-sm font-bold uppercase tracking-[.16em] text-leaf">Exemplo de uso</p>
+          <h3 class="mt-3 text-2xl font-black">Da entrada à venda</h3>
+          <div class="mt-8 space-y-4">
+            <div class="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-4"><span
+                class="grid h-12 w-12 place-items-center rounded-xl bg-white/10 text-xl">📦</span>
+              <div class="flex-1">
+                <p class="font-bold">1. Produto cadastrado</p>
+                <p class="mt-1 text-sm text-slate-400">20 unidades disponíveis</p>
+              </div><span class="text-leaf">+20</span>
+            </div>
+            <div class="ml-9 h-5 border-l border-dashed border-white/30"></div>
+            <div class="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-4"><span
+                class="grid h-12 w-12 place-items-center rounded-xl bg-white/10 text-xl">🛒</span>
+              <div class="flex-1">
+                <p class="font-bold">2. Venda registrada</p>
+                <p class="mt-1 text-sm text-slate-400">3 unidades vendidas</p>
+              </div><span class="text-amber-300">−3</span>
+            </div>
+            <div class="ml-9 h-5 border-l border-dashed border-white/30"></div>
+            <div class="flex items-center gap-4 rounded-2xl bg-leaf p-4 text-ink"><span
+                class="grid h-12 w-12 place-items-center rounded-xl bg-black/5 text-xl">✓</span>
+              <div class="flex-1">
+                <p class="font-black">3. Estoque atualizado</p>
+                <p class="mt-1 text-sm text-ink/70">17 unidades restantes</p>
+              </div><span class="text-lg font-black">17</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Funcionalidades -->
+    <section id="funcionalidades" class="anchor-offset mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-sm font-extrabold uppercase tracking-[.18em] text-emerald-700">03 / O que o sistema oferece</p>
+        <h2 class="mt-4 text-4xl font-black tracking-tight sm:text-5xl text-white">Tudo o que é essencial para começar.</h2>
+        <p class="mt-5 leading-7 text-muted text-white">Um escopo enxuto, focado nas operações mais importantes para a primeira
+          versão do sistema.</p>
+      </div>
+      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <article
+          class="group rounded-3xl border border-black/5 bg-white p-7 transition hover:-translate-y-1 hover:shadow-soft">
+          <span class="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-100 text-2xl">📦</span>
+          <h3 class="mt-5 text-lg font-extrabold">Cadastro de produtos</h3>
+          <p class="mt-2 leading-7 text-muted">Registrar nome, preço, quantidade e informações essenciais dos itens.</p>
+        </article>
+        <article
+          class="group rounded-3xl border border-black/5 bg-white p-7 transition hover:-translate-y-1 hover:shadow-soft">
+          <span class="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-100 text-2xl">🔄</span>
+          <h3 class="mt-5 text-lg font-extrabold">Entrada e saída</h3>
+          <p class="mt-2 leading-7 text-muted">Controlar novas mercadorias e as baixas geradas pelas vendas.</p>
+        </article>
+        <article
+          class="group rounded-3xl border border-black/5 bg-white p-7 transition hover:-translate-y-1 hover:shadow-soft">
+          <span class="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-100 text-2xl">🛒</span>
+          <h3 class="mt-5 text-lg font-extrabold">Registro de vendas</h3>
+          <p class="mt-2 leading-7 text-muted">Selecionar produtos, informar quantidades e calcular o valor da venda.
+          </p>
+        </article>
+        <article
+          class="group rounded-3xl border border-black/5 bg-white p-7 transition hover:-translate-y-1 hover:shadow-soft">
+          <span class="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-100 text-2xl">💰</span>
+          <h3 class="mt-5 text-lg font-extrabold">Total vendido</h3>
+          <p class="mt-2 leading-7 text-muted">Consultar a soma das vendas registradas no sistema.</p>
+        </article>
+        <article
+          class="group rounded-3xl border border-black/5 bg-white p-7 transition hover:-translate-y-1 hover:shadow-soft">
+          <span class="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-100 text-2xl">📊</span>
+          <h3 class="mt-5 text-lg font-extrabold">Painel do negócio</h3>
+          <p class="mt-2 leading-7 text-muted">Visualizar indicadores úteis para acompanhar a operação.</p>
+        </article>
+        <article
+          class="group rounded-3xl border border-black/5 bg-white p-7 transition hover:-translate-y-1 hover:shadow-soft">
+          <span class="grid h-12 w-12 place-items-center rounded-2xl bg-rose-100 text-2xl">⚠️</span>
+          <h3 class="mt-5 text-lg font-extrabold">Alerta de estoque baixo</h3>
+          <p class="mt-2 leading-7 text-muted">Sinalizar itens abaixo do limite mínimo definido.</p>
+        </article>
+      </div>
+      <div class="mt-8 rounded-2xl border border-emerald-900/10 bg-emerald-50 p-5 text-sm leading-6 text-emerald-950">
+        <strong>Regra de negócio:</strong> o sistema deve impedir a conclusão de uma venda quando a quantidade
+        solicitada for maior que o estoque disponível.</div>
+    </section>
+
+    <!-- Telas -->
+    <section class="bg-white py-20 lg:py-24">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <div>
+            <p class="text-sm font-extrabold uppercase tracking-[.18em] text-emerald-700">04 / Experiência</p>
+            <h2 class="mt-4 text-4xl font-black tracking-tight sm:text-5xl">Quatro áreas. Uma rotina organizada.</h2>
+          </div>
+          <p class="max-w-md leading-7 text-muted">As telas serão detalhadas no protótipo do Figma e ajustadas durante o
+            desenvolvimento.</p>
+        </div>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="rounded-3xl bg-paper p-6"><span
+              class="text-xs font-black uppercase tracking-widest text-emerald-700">Tela 01</span>
+            <div class="mt-5 grid h-14 w-14 place-items-center rounded-2xl bg-ink text-2xl text-leaf">⌂</div>
+            <h3 class="mt-5 text-lg font-extrabold">Início</h3>
+            <p class="mt-2 text-sm leading-6 text-muted">Apresentação e acesso rápido às principais áreas.</p>
+          </div>
+          <div class="rounded-3xl bg-paper p-6"><span
+              class="text-xs font-black uppercase tracking-widest text-emerald-700">Tela 02</span>
+            <div class="mt-5 grid h-14 w-14 place-items-center rounded-2xl bg-ink text-2xl text-leaf">▦</div>
+            <h3 class="mt-5 text-lg font-extrabold">Produtos</h3>
+            <p class="mt-2 text-sm leading-6 text-muted">Cadastro, consulta, edição e exclusão de produtos.</p>
+          </div>
+          <div class="rounded-3xl bg-paper p-6"><span
+              class="text-xs font-black uppercase tracking-widest text-emerald-700">Tela 03</span>
+            <div class="mt-5 grid h-14 w-14 place-items-center rounded-2xl bg-ink text-2xl text-leaf">＋</div>
+            <h3 class="mt-5 text-lg font-extrabold">Nova venda</h3>
+            <p class="mt-2 text-sm leading-6 text-muted">Seleção de itens, quantidades e cálculo do total.</p>
+          </div>
+          <div class="rounded-3xl bg-paper p-6"><span
+              class="text-xs font-black uppercase tracking-widest text-emerald-700">Tela 04</span>
+            <div class="mt-5 grid h-14 w-14 place-items-center rounded-2xl bg-ink text-2xl text-leaf">▥</div>
+            <h3 class="mt-5 text-lg font-extrabold">Painel</h3>
+            <p class="mt-2 text-sm leading-6 text-muted">Resumo das vendas, produtos e alertas de estoque.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tecnologias -->
+    <section id="tecnologias" class="anchor-offset mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+      <div class="grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
+        <div>
+          <p class="text-sm font-extrabold uppercase tracking-[.18em] text-emerald-700">05 / Construção</p>
+          <h2 class="mt-4 text-4xl font-black tracking-tight sm:text-5xl text-white">Tecnologia aplicada a um problema real.</h2>
+          <p class="mt-5 leading-7 text-muted text-white">O projeto combina desenvolvimento de interface, lógica de negócio,
+            integração e colaboração em equipe.</p><a
+            href="https://www.figma.com/design/NxjxRFNNGmrascRsjAgbH3/Untitled?node-id=1-5&p=f&t=0b31aMWiyL9FBQ1M-0"
+            target="_blank" rel="noreferrer"
+            class=" text-white mt-7 border-white inline-flex items-center gap-2 rounded-full border border-ink/15 px-5 py-3 font-bold ">Abrir
+            protótipo no Figma <span>↗</span></a>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-2xl border border-black/5 bg-white p-5">
+            <div class="flex items-center gap-3"><span
+                class="grid h-10 w-10 place-items-center rounded-xl bg-orange-100 font-black text-orange-700">H</span>
+              <div>
+                <h3 class="font-extrabold">HTML5</h3>
+                <p class="text-sm text-muted">Estrutura das páginas</p>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-2xl border border-black/5 bg-white p-5">
+            <div class="flex items-center gap-3"><span
+                class="grid h-10 w-10 place-items-center rounded-xl bg-blue-100 font-black text-blue-700">C</span>
+              <div>
+                <h3 class="font-extrabold">CSS / Tailwind</h3>
+                <p class="text-sm text-muted">Estilo e responsividade</p>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-2xl border border-black/5 bg-white p-5">
+            <div class="flex items-center gap-3"><span
+                class="grid h-10 w-10 place-items-center rounded-xl bg-yellow-100 font-black text-yellow-700">JS</span>
+              <div>
+                <h3 class="font-extrabold">JavaScript</h3>
+                <p class="text-sm text-muted">Interações e validações</p>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-2xl border border-black/5 bg-white p-5">
+            <div class="flex items-center gap-3"><span
+                class="grid h-10 w-10 place-items-center rounded-xl bg-red-100 font-black text-red-700">J</span>
+              <div>
+                <h3 class="font-extrabold">Firebase</h3>
+                <p class="text-sm text-muted">Lógica e regras de negócio</p>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-2xl border border-black/5 bg-white p-5">
+            <div class="flex items-center gap-3"><span
+                class="grid h-10 w-10 place-items-center rounded-xl bg-slate-100 font-black text-slate-700">Git</span>
+              <div>
+                <h3 class="font-extrabold">Git + GitHub</h3>
+                <p class="text-sm text-muted">Histórico e colaboração</p>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-2xl border border-black/5 bg-white p-5">
+            <div class="flex items-center gap-3"><span
+                class="grid h-10 w-10 place-items-center rounded-xl bg-purple-100 font-black text-purple-700">F</span>
+              <div>
+                <h3 class="font-extrabold">Figma</h3>
+                <p class="text-sm text-muted">Prototipação das telas</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Entregas -->
+    <section class="bg-ink py-20 text-white lg:py-24">
+      <div class="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-2 lg:px-8">
+        <div>
+          <p class="text-sm font-extrabold uppercase tracking-[.18em] text-leaf">06 / Plano de entrega</p>
+          <h2 class="mt-4 text-4xl font-black tracking-tight sm:text-5xl">Do planejamento à demonstração.</h2>
+          <p class="mt-5 leading-7 text-slate-300">O foco é entregar primeiro as funcionalidades essenciais, testar os
+            fluxos principais e preparar uma apresentação objetiva.</p>
+        </div>
+        <div class="space-y-3">
+          <div class="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4"><span
+              class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-leaf font-black text-ink">1</span>
+            <div>
+              <h3 class="font-extrabold">Planejamento e protótipo</h3>
+              <p class="mt-1 text-sm text-slate-400">Escopo, público-alvo, identidade visual e Figma.</p>
+            </div>
+          </div>
+          <div class="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4"><span
+              class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-leaf font-black text-ink">2</span>
+            <div>
+              <h3 class="font-extrabold">Desenvolvimento</h3>
+              <p class="mt-1 text-sm text-slate-400">Interface, CRUD e regras de negócio em Firebase.</p>
+            </div>
+          </div>
+          <div class="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4"><span
+              class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-leaf font-black text-ink">3</span>
+            <div>
+              <h3 class="font-extrabold">Integração e testes</h3>
+              <p class="mt-1 text-sm text-slate-400">Validar formulários, vendas, estoque e responsividade.</p>
+            </div>
+          </div>
+          <div class="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4"><span
+              class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-leaf font-black text-ink">4</span>
+            <div>
+              <h3 class="font-extrabold">README e apresentação</h3>
+              <p class="mt-1 text-sm text-slate-400">Documentação, imagens e demonstração de até 7 minutos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Links -->
+    <section id="links" class="anchor-offset mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
+      <div class="rounded-[2rem] bg-leaf p-7 sm:p-10 lg:flex lg:items-center lg:justify-between lg:gap-10">
+        <div class="max-w-2xl">
+          <p class="text-sm font-extrabold uppercase tracking-[.18em] text-emerald-400/70">Vamos construir</p>
+          <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl text-white">Acompanhe o projeto StockUp.</h2>
+          <p class="mt-4 leading-7 text-emerald-400">Consulte o código, acompanhe o protótipo e visualize a
+            organização geral dos projetos.</p>
+        </div>
+        <div class="mt-7 flex shrink-0 flex-col gap-3 sm:flex-row lg:mt-0 lg:flex-col xl:flex-row">
+          <a href="https://github.com/CrisStacksXp/StockUp-ProaSP15-2026-2Semestre" target="_blank" rel="noreferrer"
+            class="inline-flex items-center justify-center gap-2 border rounded-full bg-ink px-5 py-4 font-bold text-white transition hover:bg-emerald-950">GitHub
+            <span>↗</span></a>
+          <a href="https://www.figma.com/design/NxjxRFNNGmrascRsjAgbH3/Untitled?node-id=1-5&p=f&t=0b31aMWiyL9FBQ1M-0"
+            target="_blank" rel="noreferrer"
+            class="inline-flex items-center justify-center gap-2 rounded-full border border-ink/20 px-5 py-4 font-bold text-ink transition hover:bg-white/40">Figma
+            <span>↗</span></a>
+          <a href="https://docs.google.com/spreadsheets/d/1bpxkz5100b0UViZhN_GCIKabFq7Ipb7H9Gj_GaGHgAE/edit?usp=sharing"
+            target="_blank" rel="noreferrer"
+            class="inline-flex items-center justify-center gap-2 rounded-full border border-ink/20 px-5 py-4 font-bold text-ink transition hover:bg-white/40">Projetos
+            <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-black/5 bg-white">
+    <div
+      class="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-7 text-sm text-muted sm:flex-row sm:items-center sm:justify-between lg:px-8">
+      <p><span class="font-black text-ink">StockUp</span> · Projeto acadêmico de controle de vendas e estoque.</p>
+      <p>Desenvolvido como proposta de solução para pequenos negócios.</p>
+    </div>
+  </footer>
+
+
+</body>
+
+</html>
