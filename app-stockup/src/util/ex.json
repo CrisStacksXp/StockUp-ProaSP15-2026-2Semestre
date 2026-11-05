@@ -1,0 +1,62 @@
+
+[
+{
+    "id": 1, 
+    "nome": "Agua Mineral",
+    "categoria": "Bebidas" ,
+    "valor": 2.50,
+    "estoque": 5 
+},
+
+
+{
+    "id": 2, 
+    "nome": "Refrigerante Lata",
+    "categoria": "Bebidas" ,
+    "valor": 5.00,
+    "estoque": 8 
+},
+
+{
+    "id": 3, 
+    "nome": "Biscoito Recheado",
+    "categoria": "Alimentos" ,
+    "valor": 3.50,
+    "estoque": 12 
+},
+
+{
+    "id": 4, 
+    "nome": "Sabonete",
+    "categoria": "Higiene" ,
+    "valor": 4.90,
+    "estoque": 28 
+},
+
+{
+    "id": 5, 
+    "nome": "Shampoo 350 ml",
+    "categoria": "Higiene" ,
+    "valor": 12.90,
+    "estoque": 45 
+},
+
+
+{
+    "id": 6, 
+    "nome": "Papel Higienico",
+    "categoria": "Limpeza" ,
+    "valor": 8.50,
+    "estoque": 20 
+},
+
+{
+    "id": 7, 
+    "nome": "Detergente",
+    "categoria": "Limpeza" ,
+    "valor": 3.25,
+    "estoque": 32 
+}
+
+
+]
