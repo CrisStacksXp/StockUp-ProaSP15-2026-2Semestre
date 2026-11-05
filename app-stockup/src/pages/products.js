@@ -3,7 +3,6 @@ export class Products {
 
     }
 
-
     render() {
         return `
         <main class="p-6">
