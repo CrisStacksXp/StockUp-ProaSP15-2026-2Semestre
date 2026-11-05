@@ -1,9 +1,22 @@
-import './style.css'
+import './style.css';
 
+import { Navigation } from './components/navigation.js';
 
+import { Router } from './util/router.js';
+import { routes } from './util/router-init.js';
 
-document.querySelector('#app').innerHTML = /*html*/`
-<section id="center">
-  <h1 class="text-stone-150">StockUP / Gerenciando o futuro</h1>
-</section>
+// Inicializa a estrutura principal
+document.querySelector('#app').innerHTML = `
+    <section id="center">
+
+        ${new Navigation(routes).render()}
+
+        <main id="content"></main>
+
+    </section>
 `;
+
+// Inicializa o roteador
+const router = new Router(routes);
+
+router.init();
